@@ -14,6 +14,7 @@ import time
 import datetime
 from time import gmtime, strftime
 from six.moves import xrange
+from PIL import Image
 
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
@@ -90,7 +91,7 @@ def center_crop(x, crop_h, crop_w,
   h, w = x.shape[:2]
   j = int(round((h - crop_h)/2.))
   i = int(round((w - crop_w)/2.))
-  return numpy.array(Image.fromarray(x[j:j+crop_h, i:i+crop_w]).resize((resize_h, resize_w)))
+  return np.array(Image.fromarray(x[j:j+crop_h, i:i+crop_w]).resize((resize_h, resize_w)))
 
 def transform(image, input_height, input_width, 
               resize_height=64, resize_width=64, crop=True):
